@@ -1,0 +1,8 @@
+# Lab Report AI Agent — Dependencies
+# Install with: pip install -r requirements.txt
+
+pdfplumber>=0.11.0      # PDF table extraction (core dependency)
+reportlab>=4.0.0        # Used only for creating the sample PDF (demo purposes)
+
+# All other components use Python standard library only:
+# re, json, pathlib, dataclasses, datetime, sys, os
