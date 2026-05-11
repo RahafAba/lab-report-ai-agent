@@ -18,7 +18,7 @@ The agent processes a blood test PDF through four steps.
 
 **Step 2** compares each result against its reference range and calculates how far outside normal it falls, assigning a severity level of mild, moderate, or significant.
 
-**Step 3** generates a plain-language explanation for every result in both English and Arabic, with causes that are appropriate to the severity level. A mildly elevated result gets a different explanation than a significantly elevated one.
+**Step 3** generates a plain language explanation for every result in both English and Arabic, with causes that are appropriate to the severity level. A mildly elevated result gets a different explanation than a significantly elevated one.
 
 **Step 4** produces escalation guidance, a follow-up list, a full confidence report, and a mandatory medical disclaimer in both languages.
 
