@@ -188,7 +188,7 @@ def create_sample_lab_report():
     story.append(Spacer(1,6*mm))
     story.append(HRFlowable(width="100%", thickness=1, color=colors.HexColor('#aaaaaa')))
     story.append(Spacer(1,2*mm))
-    story.append(Paragraph("⚠ This report is for physician use only. SAMPLE/DEMO document for educational purposes.", disc_s))
+    story.append(Paragraph("This report is for physician use only. SAMPLE/DEMO document for educational purposes.", disc_s))
 
     doc.build(story)
     print("Sample PDF created: sample_data/sample_blood_test.pdf")
