@@ -1,4 +1,4 @@
-# Generates plain-language explanations for each lab result in English and Arabic.
+# Generates plain language explanations for each lab result in English and Arabic.
 # Causes shown depend on severity, so mild results get mild explanations.
 
 from datetime import datetime
