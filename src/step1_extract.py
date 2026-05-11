@@ -161,6 +161,8 @@ def extract_from_pdf(pdf_path: str) -> dict:
     all_tests = []
     all_tables_flat = []
 
+    last_known_panel = "General"
+
     with pdfplumber.open(pdf_path) as pdf:
         for page in pdf.pages:
             page_text = page.extract_text() or ""
@@ -181,9 +183,23 @@ def extract_from_pdf(pdf_path: str) -> dict:
                     all_tables_flat.append(tables[0])
                     start_ti = 1
 
+            # If page has no detected panels, infer from test names in the text
+            if not page_panels:
+                upper_text = page_text.upper()
+                if any(k in upper_text for k in ["PROTHROMBIN", "FIBRINOGEN", "INR", " PT "]):
+                    page_panels = ["Coagulation"]
+                elif any(k in upper_text for k in ["TROPONIN", "BNP"]):
+                    page_panels = ["Cardiac Markers"]
+
             data_tables = tables[start_ti:]
             for ti, table in enumerate(data_tables):
-                panel = page_panels[ti] if ti < len(page_panels) else (page_panels[-1] if page_panels else "General")
+                if ti < len(page_panels):
+                    panel = page_panels[ti]
+                elif page_panels:
+                    panel = page_panels[-1]
+                else:
+                    panel = last_known_panel
+                last_known_panel = panel
                 all_tables_flat.append(table)
 
                 for row in table:
