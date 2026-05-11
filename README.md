@@ -83,7 +83,7 @@ lab-report-ai-agent/
 
 ## Limitations
 
-The extraction works best with structured, table-based PDFs. Scanned documents require OCR which is not included. Reference ranges are general population standards and may not apply to every individual. This tool is for informational purposes only and does not constitute medical advice.
+The extraction works best with structured, table based PDFs. Scanned documents require OCR which is not included. Reference ranges are general population standards and may not apply to every individual. This tool is for informational purposes only and does not constitute medical advice.
 
 ---
 
