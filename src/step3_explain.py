@@ -1,4 +1,4 @@
-# Generates plain language explanations for each lab result in English and Arabic.
+# Generates plain-language explanations for each lab result in English and Arabic.
 # Causes shown depend on severity, so mild results get mild explanations.
 
 from datetime import datetime
@@ -252,7 +252,7 @@ def _ar_test_name(en_name: str) -> str:
         return max(matches, key=lambda x: len(x[0]))[1]
     return clean  # fallback to English
 
-# Sentence templates for each result state 
+# Sentence templates for each result state──
 EN_NORMAL = "**{name}** — Your result of **{result} {unit}** is within the normal range ({ref}). This is a healthy result."
 
 EN_HIGH = {
@@ -537,6 +537,8 @@ EN_CAUSES = {
     "INR_HIGH":   {"mild": "borderline anticoagulation or mild liver issue","moderate": "over-anticoagulation or liver dysfunction","significant": "significant bleeding risk requiring urgent evaluation"},
     "INR_LOW":    {"mild": "normal variation","moderate": "under-anticoagulation in patients on warfarin","significant": "clotting risk in anticoagulated patients"},
     "PT_HIGH":    {"mild": "mild liver issue or vitamin K deficiency","moderate": "liver dysfunction or significant vitamin K deficiency","significant": "significant liver disease or severe coagulation disorder"},
+    "FIB_HIGH":   {"mild": "recent infection, physical stress, or inflammation","moderate": "active inflammation or clotting risk","significant": "significant inflammatory condition or clotting disorder requiring evaluation"},
+    "FIB_LOW":    {"mild": "normal variation","moderate": "liver disease or consumption of clotting factors","significant": "significant liver disease or rare clotting disorder"},
     # Uric Acid
     "UA_HIGH":    {"mild": "high purine diet or mild dehydration","moderate": "gout risk or reduced kidney excretion","significant": "active gout or significant kidney excretion problem"},
 }
@@ -796,6 +798,8 @@ AR_CAUSES = {
     "INR_HIGH":   {"mild": "تخثر حدودي أو مشكلة بسيطة في الكبد","moderate": "إفراط في مضادات التخثر أو خلل في وظائف الكبد","significant": "خطر نزيف واضح يحتاج تقييماً عاجلاً"},
     "INR_LOW":    {"mild": "تفاوت طبيعي","moderate": "نقص في مضادات التخثر عند من يتناولونها","significant": "خطر تجلط عند المرضى على مضادات التخثر"},
     "PT_HIGH":    {"mild": "مشكلة بسيطة في الكبد أو نقص فيتامين ك","moderate": "خلل في وظائف الكبد أو نقص واضح في فيتامين ك","significant": "مرض كبدي واضح أو اضطراب في التجلط"},
+    "FIB_HIGH":   {"mild": "التهاب أو إجهاد جسدي حديث","moderate": "التهاب نشط أو خطر تجلط","significant": "حالة التهابية أو خطر تجلط واضح يحتاج تقييماً"},
+    "FIB_LOW":    {"mild": "تفاوت طبيعي","moderate": "مرض كبدي أو استهلاك عوامل التجلط","significant": "مرض كبدي واضح أو اضطراب نادر في التجلط"},
 }
 
 # Maps test names to their cause keys
@@ -876,6 +880,7 @@ CAUSE_KEY_MAP = [
     ("ESR",           "ESR"),
     ("INR",           "INR"),
     ("PT",            "PT"),
+    ("FIBRINOGEN",    "FIB"),
 ]
 
 def _lookup_key(test_name: str, flag: str):
